@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import  "../src/assets/Tycss.css"
 import '../src/assets/normal.css'
+import '../src/assets/tongyong.css'
 import vuex from 'vuex'
 import axios from 'axios'
 

@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const Home=()=>import("@/components/Home");
 const MyOffer=()=>import('@/components/MyOffer/index');
 const Person=()=>import('@/components/Person/index');
+const ListComContect=()=>import('@/components/home/ListComContect');
 
 Vue.use(Router)
 
@@ -18,7 +19,7 @@ export default new Router({
     {
       path:"/home",
       name:'Home',
-      component:Home
+      component:Home,
     },
     {
       path:'/Myoffer',
@@ -30,6 +31,11 @@ export default new Router({
       name:"Person",
       component:Person
     },
+    {
+      path:"/ListComContect",
+      component:ListComContect,
+      name:"ListComContect"
+    }
 
   ]
 })

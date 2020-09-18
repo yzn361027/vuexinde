@@ -1,5 +1,5 @@
 <template>
-   <div class="main">
+   <div class="main size">
      <div class="font-left"><h2>消防连采销平台</h2></div>
      <div class="font-left"><p>销售销售销售销售销售销售销售销售</p></div>
    </div>
@@ -23,6 +23,7 @@
     /*设置子元素的排列方式为剧中*/
     justify-content: center;
     color:#ffffff;
+    margin-top:.6rem
   }
   .font-left{
     padding-left:1rem;
@@ -30,5 +31,6 @@
     width:100%;
     box-sizing: border-box;
   }
+
 
 </style>

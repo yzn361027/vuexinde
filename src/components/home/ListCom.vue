@@ -2,7 +2,8 @@
 
 <template>
   <div >
-    <div class="main" v-for="data in person">
+    <router-view></router-view>
+    <div class="main size" v-for="data in person" @click="go()">
       <div class="children1">
         <p class="p2">{{data.title}}</p>
         <p class="p1">2020-09-07 00:17</p>
@@ -93,6 +94,11 @@
       //     console.log(result);
       // })
 
+      },
+      methods:{
+      go(){
+        this.$router.push('ListComContect')
+      }
       }
 
     }
@@ -100,14 +106,13 @@
 
 <style scoped>
   .main{
-    width:100%;
     border-radius:.3rem;
     box-sizing: border-box;
     padding:.2rem;
     display:flex;
     height:7.4rem;
     background: #ffffff;
-    margin-top:1.6rem;
+    margin-top:1rem;
     box-shadow: 2px 2px 8px #f0e7e4;
   }
   .main .children1{
