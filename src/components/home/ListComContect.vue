@@ -57,7 +57,7 @@
  }
   .main{
     margin-top:.8rem;
-    line-height:1.8rem;
+    line-height:2rem;
   }
   .h1{
     margin-top:.5rem;

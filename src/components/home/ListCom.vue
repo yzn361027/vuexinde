@@ -5,7 +5,7 @@
     <router-view></router-view>
     <div class="main size" v-for="data in person" @click="go()">
       <div class="children1">
-        <p class="p2">{{data.title}}</p>
+        <p class="p2">{{data.adress}}</p>
         <p class="p1">2020-09-07 00:17</p>
         <div class="div2 p1" ><span class="span1">置顶</span>编号：412302203201230</div>
       </div>
@@ -40,12 +40,26 @@
       },
       created(){
       request({
-        url:"/home/multidata"
+        url:"/home/multidata",
+
       }).then(res => {
+
         const str=JSON.stringify(res.data.data.banner.list);
             const newResult=JSON.parse(str);
             this.person=newResult;
       });
+
+      // request2({
+      //   url:'purchaseOrderlist.htm',
+      // }).then(res=>{
+      //   console.log(res);
+      //   const str=JSON.stringify(res.data.data);
+      //   const newResult=JSON.parse(str);
+      //   this.person=newResult;
+      //   console.log(this.person)
+      //
+      // })
+
       // request({
       //   url:"/home/multidata"
       // }).then(res => {
@@ -112,7 +126,7 @@
     display:flex;
     height:7.4rem;
     background: #ffffff;
-    margin-top:1rem;
+    margin-top:1.2rem;
     box-shadow: 2px 2px 8px #f0e7e4;
   }
   .main .children1{
