@@ -5,6 +5,7 @@ const Home=()=>import("@/components/Home");
 const MyOffer=()=>import('@/components/MyOffer/index');
 const Person=()=>import('@/components/Person/index');
 const ListComContect=()=>import('@/components/home/ListComContect');
+const PersonIndex=()=>import('@/components/Person/person');
 
 Vue.use(Router)
 
@@ -35,7 +36,13 @@ export default new Router({
       path:"/ListComContect",
       component:ListComContect,
       name:"ListComContect"
+    },
+    {
+      path:"/PersonIndex",
+      component:PersonIndex,
+      name:"PersonIndex"
     }
+
 
   ]
 })

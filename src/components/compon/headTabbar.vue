@@ -8,13 +8,15 @@
 </template>
 
 <script>
+
     export default {
         name: "head-tabbar",
       methods:{
           go(){
             this.$router.go(-1);
           }
-      }
+      },
+
     }
 
 </script>

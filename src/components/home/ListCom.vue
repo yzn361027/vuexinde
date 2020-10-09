@@ -1,16 +1,35 @@
 
 
 <template>
-  <div >
+  <div>
     <router-view></router-view>
-    <div class="main size" v-for="data in person" @click="go()">
+    <!--<div class="main size" v-for="data in $store.getters.searchID(serchId)" @click="go()">-->
+      <!--<div class="children1">-->
+        <!--<p class="p2">{{data.name}}</p>-->
+        <!--<p class="p1">{{data.age}}</p>-->
+        <!--<div class="div2 p1" ><span class="span1">置顶</span>编号:{{data.id}}</div>-->
+      <!--</div>-->
+      <!--<div class="children2">-->
+        <!--<p class="p1">{{serchId}}</p>-->
+        <!--<p class="p2">3天21小时21分</p>-->
+        <!--<div class="div1">-->
+          <!--<div class="top" :style="-->
+<!--{width:large}-->
+<!--"></div>-->
+        <!--</div>-->
+        <!--<span></span>-->
+      <!--</div>-->
+
+    <!--</div>-->
+
+    <div class="main size" v-for="data in person" @click="go(data.id)">
       <div class="children1">
-        <p class="p2">{{data.adress}}</p>
-        <p class="p1">2020-09-07 00:17</p>
-        <div class="div2 p1" ><span class="span1">置顶</span>编号：412302203201230</div>
+        <p class="p2">{{data.programName}}</p>
+        <p class="p1"></p>
+        <div class="div2 p1" ><span class="span1">置顶</span>编号:</div>
       </div>
       <div class="children2">
-        <p class="p1">距离截止报价日期</p>
+        <p class="p1"></p>
         <p class="p2">3天21小时21分</p>
         <div class="div1">
           <div class="top" :style="
@@ -19,6 +38,7 @@
         </div>
         <span></span>
       </div>
+
 
     </div>
   </div>
@@ -29,89 +49,56 @@
 
   import axios from 'axios'
   import {request,request2} from '@/network/request'
+  import {getHomeMultidata,getMyOffer} from '@/network/home'
     export default {
     axios,
         name: "list-com",
       data(){
           return{
             large:50+"%",
-            person:''
+            person:'',
+            ssearch:"",
+            idNum:''
           }
       },
-      created(){
-      request({
-        url:"/home/multidata",
-
-      }).then(res => {
-
-        const str=JSON.stringify(res.data.data.banner.list);
-            const newResult=JSON.parse(str);
-            this.person=newResult;
-      });
-
-      // request2({
-      //   url:'purchaseOrderlist.htm',
-      // }).then(res=>{
-      //   console.log(res);
-      //   const str=JSON.stringify(res.data.data);
-      //   const newResult=JSON.parse(str);
-      //   this.person=newResult;
-      //   console.log(this.person)
-      //
-      // })
-
-      // request({
-      //   url:"/home/multidata"
-      // }).then(res => {
-      //   console.log(res)
-      // })
-      //   axios({
-      //     url:"http://123.207.32.32:8000/home/multidata",
-      //   })
-      //     .then(results=>{
-      //       // 深浅拷贝
-      //       const str=JSON.stringify(results.data.data.banner.list);
-      //
-      //      this.person=JSON.parse(str);
-      //
-      //      this.person[0].height=200;
-      //      // 修改对象就是在修改引用类型，所以这里需要进行转换
-      //      console.log(results.data.data.banner.list[0].height)
-      //
-      //      console.log(results);
-      //      console.log(this.person);
-      //
-      // })
-
-        // const instance1 =axios.create({
-        //   baseURL:"http://123.207.32.32:8000/",
-        //   timeout:5000
-        // });
-        //
-        // instance1({
-        // url:"home/multidata"
-        //
-        // })
-        //   .then(result=>{
-        //     const str=JSON.stringify(result.data.data.banner.list);
-        //     const newResult=JSON.parse(str);
-        //     this.person=newResult;
-        //
-        // });
-        // console.log(request);
-      //   request({
-      //     url:"home/multidata"
-      //   }).then(result=>{
-      //   //   const str=JSON.stringify(result.data.data.banner.list);
-      //   // const newResult=JSON.parse(str);
-      //   // this.person=newResult;
-      //     console.log(result);
-      // })
+      props:{
+        serchId:Number,
 
       },
+      mounted(){
+      // console.log($store.getters.more20)
+      },
+      created(){
+        // getMyOffer().then(res =>{
+        //   console.log(res)
+        // });
+      //   getMyOffer().then(res => {
+      //     console.log(res);
+      //   // const str=JSON.stringify(res.data.data.banner.list);
+      //   //     const newResult=JSON.parse(str);
+      //   //     this.person=newResult;
+      // });
+        getHomeMultidata().then(res =>{
+          console.log(res);
+        const str=JSON.stringify(res.data.data);
+        const newResult=JSON.parse(str);
+        this.person=newResult;
+        console.log(this.person)
+        })
+      },
       methods:{
-      go(){
-        this.$router.push('ListComContect')
+
+      go(id){
+        if(this.$store.state.login){
+          this.$router.push('ListComContect');
+          this.idNum=id;
+          this.$store.commit("idtiao" ,this.idNum);
+          console.log(this.$store.state.idName);
+        }
+        else{
+          this.$router.push('Person')
+        }
+
       }
       }
 

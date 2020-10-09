@@ -15,7 +15,8 @@
           }
       },
       methods:{
-          serchId(){
+          addStyle(){
+
 
           }
       }

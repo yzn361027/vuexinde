@@ -1,10 +1,16 @@
 <template>
   <div @click="atcive">
-    <slot name="img" ></slot>
+    <span v-if="jisuan">
+      <slot name="imgz" ></slot>
+    </span>
+    <span v-else>
+      <slot name="imgw"></slot>
+    </span>
+
+
     <div :class="{text:jisuan}">
       <slot name="text"></slot>
     </div>
-
   </div>
 </template>
 
@@ -45,7 +51,8 @@
 
 <style scoped>
   .text{
-    color:red;
+    color: var(--backgroundColor);
   }
+
 
 </style>

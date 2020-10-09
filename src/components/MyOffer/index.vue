@@ -1,16 +1,16 @@
 <template>
 <div>
-  <div>我的报价</div>
+  <com></com>
 </div>
 
 </template>
 
 <script>
-  import LunBo from '@/components/home/LunBo'
+  import com from '@/components/MyOffer/components'
     export default {
         name: "index",
       components:{
-        LunBo
+       com
       }
     }
 </script>

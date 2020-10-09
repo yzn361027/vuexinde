@@ -7,7 +7,8 @@
      <slot name="four"></slot>
     </div>
     <div class="right">
-      <input type="text" value="请报价" class="input_large">
+     <!--<input type="text" class="input_large" v-model="priceData">-->
+      <slot name="inputmian"></slot>
     </div>
   </div>
 
@@ -15,7 +16,18 @@
 
 <script>
     export default {
-        name: "baojialist"
+        name: "baojialist",
+      data(){
+          return{
+            priceData:this.price
+          }
+      },
+      props:{
+          price:Number
+      },
+      methods:{
+
+      }
     }
 </script>
 
@@ -43,6 +55,7 @@
     top:50%;
     margin-top:-2rem;
     outline:none;
+    font-size:1.4rem;
   }
 
 </style>
